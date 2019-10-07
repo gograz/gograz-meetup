@@ -2,8 +2,11 @@ package meetupcom
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"net/url"
+
+	"github.com/gograz/gograz-meetup/pkg/oauth"
 )
 
 type Client struct {
@@ -11,7 +14,7 @@ type Client struct {
 }
 
 type ClientOptions struct {
-	APIKey string
+	OAuthClient *oauth.OAuth2
 }
 
 func NewClient(opts ClientOptions) *Client {
@@ -20,11 +23,11 @@ func NewClient(opts ClientOptions) *Client {
 }
 
 func (c *Client) executeGet(ctx context.Context, path string, query url.Values) (*http.Response, error) {
-	query.Set("key", c.opts.APIKey)
 	u := url.URL{Scheme: "https", Host: "api.meetup.com", Path: path, RawQuery: query.Encode()}
-	req := http.Request{
-		Method: http.MethodGet,
-		URL:    &u,
+	req, err := http.NewRequest(http.MethodGet, u.String(), nil)
+	if err != nil {
+		return nil, err
 	}
+	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", c.opts.OAuthClient.CurrentAccessToken()))
 	return http.DefaultClient.Do(req.WithContext(ctx))
 }

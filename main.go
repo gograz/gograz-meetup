@@ -5,15 +5,16 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/gograz/gograz-meetup/meetupcom"
+	"github.com/gograz/gograz-meetup/pkg/oauth"
 	"github.com/patrickmn/go-cache"
-	"github.com/rs/cors"
-	flag "github.com/spf13/pflag"
-
 	"github.com/pressly/chi"
+	"github.com/rs/cors"
 	log "github.com/sirupsen/logrus"
+	flag "github.com/spf13/pflag"
 )
 
 type server struct {
@@ -82,25 +83,52 @@ func (s *server) handleGetRSVPs(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	ctx := context.Background()
 	var addr string
 	var apiToken string
+	var apiAuthCode string
+	var apiRequestURI string
 	var urlName string
 	var allowedOrigins []string
+	apiClientID, _ := os.LookupEnv("MEETUP_CLIENT_ID")
+	apiClientSecret, _ := os.LookupEnv("MEETUP_CLIENT_SECRET")
 
 	flag.StringVar(&addr, "addr", "127.0.0.1:8080", "Address to listen on")
-	flag.StringVar(&apiToken, "api-token", "", "Meetup.com API token")
+	flag.StringVar(&apiToken, "api-token", "", "Meetup.com API refresh token")
+	flag.StringVar(&apiAuthCode, "api-auth-code", "", "Auth code")
+	flag.StringVar(&apiRequestURI, "api-request-uri", "", "API request URI for your application")
 	flag.StringVar(&urlName, "url-name", "Graz-Open-Source-Meetup", "URL name of the meetup group on meetup.com")
 	flag.StringArrayVar(&allowedOrigins, "allowed-origins", []string{"http://localhost:1313", "https://gograz.org"}, "Allowed origin hosts")
 	flag.Parse()
 
+	o := &oauth.OAuth2{ClientID: apiClientID, ClientSecret: apiClientSecret, RequestURI: apiRequestURI}
+
 	if apiToken == "" {
+		// If no API token is provided, then the client ID and client secret have to be present
+		// in order for the user to generate a new access token.
+		if apiAuthCode == "" {
+			fmt.Println(o.GenerateAuthURL(ctx))
+			os.Exit(0)
+		} else {
+			token, err := o.GetAccessToken(ctx, apiAuthCode)
+			if err != nil {
+				log.Fatalf("Failed to request access token: %s", err.Error())
+			}
+			fmt.Printf("Access token: %s\n", token)
+			os.Exit(0)
+		}
 		log.Fatal("No --api-token provided")
 	}
 
+	o.RefreshToken = apiToken
+	o.StartReload(ctx)
+
 	ch := cache.New(5*time.Minute, 10*time.Minute)
 
+	mc := meetupcom.NewClient(meetupcom.ClientOptions{OAuthClient: o})
+
 	s := server{
-		client:  meetupcom.NewClient(meetupcom.ClientOptions{APIKey: apiToken}),
+		client:  mc,
 		urlName: urlName,
 		cache:   ch,
 	}

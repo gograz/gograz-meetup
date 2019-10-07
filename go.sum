@@ -1,0 +1,11 @@
+github.com/patrickmn/go-cache v2.0.0+incompatible h1:1G02Ver4lZNbrWBHtot9O0Z2Piky5+/ilrJaTIwL/w0=
+github.com/patrickmn/go-cache v2.0.0+incompatible/go.mod h1:3Qf8kWWT7OJRJbdiICTKqZju1ZixQ/KpMGzzAfe6+WQ=
+github.com/pressly/chi v3.0.0+incompatible h1:rxmSn7a9cawCIcyHMjGjmw72Yo5dcw2NFqT8CWZ882M=
+github.com/pressly/chi v3.0.0+incompatible/go.mod h1:s/kslmeFE633XtTPvfX2olbs4ymzIHxGGXmEJ/AvPT8=
+github.com/rs/cors v0.0.0-20170608165155-8dd4211afb5d h1:573lGU02rfWK16h656qmmul1zPul8WPPCDekyq+keVs=
+github.com/rs/cors v0.0.0-20170608165155-8dd4211afb5d/go.mod h1:gFx+x8UowdsKA9AchylcLynDq+nNFfI8FkUZdN/jGCU=
+github.com/sirupsen/logrus v1.0.0 h1:XM8X4m/9ACaclZMs946FQNEZBZafvToJLTR4007drwo=
+github.com/sirupsen/logrus v1.0.0/go.mod h1:pMByvHTf9Beacp5x1UXfOR9xyW/9antXMhjMPG0dEzc=
+github.com/spf13/pflag v1.0.0 h1:oaPbdDe/x0UncahuwiPxW1GYJyilRAdsPnq3e1yaPcI=
+github.com/spf13/pflag v1.0.0/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnInEg4=
+golang.org/x/sys v0.0.0-20170630171205-4ed4d404df45/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
