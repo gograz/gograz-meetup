@@ -105,6 +105,8 @@ func main() {
 		AllowCredentials: true,
 	})
 	router.Get("/{eventID}/rsvps", s.handleGetRSVPs)
+	router.Get("/alive", func(w http.ResponseWriter, r *http.Request) {
+	})
 	log.Infof("Starting HTTPD on %s", addr)
 	_ = http.ListenAndServe(addr, c.Handler(router))
 }
