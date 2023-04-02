@@ -1,0 +1,11 @@
+{{ range .Yes }}
+    <a class="member" title="{{ .Name }}" href="https://www.meetup.com/Graz-Open-Source-Meetup/members/{{ .ID }}">
+        {{ if .ThumbLink }}
+        <img src="{{ .ThumbLink }}" alt="{{ .Name }}" />
+        {{ else }}
+        <img src="https://gograz.org/images/gopher.png" alt="{{ .Name }}" />
+        {{ end }}
+    </a>
+{{ else }}
+    Be the first to sign up!
+{{ end }}
