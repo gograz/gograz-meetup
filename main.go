@@ -33,8 +33,9 @@ type attendee struct {
 }
 
 type rsvps struct {
-	Yes []attendee `json:"yes"`
-	No  []attendee `json:"no"`
+	Yes     []attendee `json:"yes"`
+	No      []attendee `json:"no"`
+	EventID string     `json:"eventID"`
 }
 
 //go:embed templates/*
@@ -89,6 +90,7 @@ func (s *server) handleGetRSVPs(w http.ResponseWriter, r *http.Request) {
 		s.cache.Set(cacheKey, *rsvps, 0)
 	}
 	output := convertRSVPs(*rsvps)
+	output.EventID = eventID
 
 	if r.Header.Get("hx-request") == "true" {
 		w.Header().Set("Content-Type", "text/html")
