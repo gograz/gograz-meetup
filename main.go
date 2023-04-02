@@ -128,7 +128,7 @@ func main() {
 		AllowedOrigins:   allowedOrigins,
 		AllowedMethods:   []string{http.MethodGet},
 		AllowCredentials: true,
-		AllowedHeaders:   []string{"hx-current-url", "hx-request", "content-type", "accept"},
+		AllowedHeaders:   []string{"hx-current-url", "hx-request", "hx-target", "hx-trigger", "content-type", "accept"},
 	}))
 	router.Get("/{eventID}/rsvps", s.handleGetRSVPs)
 	router.Get("/alive", func(w http.ResponseWriter, r *http.Request) {
