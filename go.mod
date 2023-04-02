@@ -6,9 +6,9 @@ require (
 	cloud.google.com/go/storage v1.29.0
 	dagger.io/dagger v0.5.0
 	github.com/go-chi/chi/v5 v5.0.8
+	github.com/go-chi/cors v1.2.1
 	github.com/magefile/mage v1.14.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
-	github.com/rs/cors v1.8.3
 	github.com/rs/zerolog v1.29.0
 	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/pflag v1.0.5
