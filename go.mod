@@ -5,7 +5,7 @@ go 1.20
 require (
 	cloud.google.com/go/storage v1.29.0
 	dagger.io/dagger v0.5.0
-	github.com/go-chi/chi/v5 v5.0.8
+	github.com/go-chi/chi/v5 v5.1.0
 	github.com/go-chi/cors v1.2.1
 	github.com/magefile/mage v1.15.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
