@@ -16,7 +16,6 @@ var logger zerolog.Logger
 
 func init() {
 	logger = zerolog.New(zerolog.ConsoleWriter{Out: os.Stderr}).With().Timestamp().Logger()
-
 }
 
 var Default = Build
@@ -55,7 +54,7 @@ func Ci(ctx context.Context) error {
 	goModulesCache := client.CacheVolume("gomodcache")
 
 	goContainer := client.Container(containerOpts).
-		From("golang:1.20.2").
+		From("golang:1.24.0").
 		WithMountedCache("/go/pkg/mod", goModulesCache).
 		WithMountedDirectory("/src", rootDir).
 		WithWorkdir("/src")
