@@ -8,6 +8,11 @@ on:
     branches:
       - "master"
 
+permissions:
+  contents: read
+  id-token: write
+  packages: write
+
 jobs:
   main:
     runs-on: ubuntu-latest
