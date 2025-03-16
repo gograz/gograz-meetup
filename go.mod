@@ -1,6 +1,7 @@
 module github.com/gograz/gograz-meetup
 
 go 1.24.0
+
 require (
 	cloud.google.com/go/storage v1.51.0
 	dagger.io/dagger v0.16.3

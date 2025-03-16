@@ -54,7 +54,7 @@ func Ci(ctx context.Context) error {
 	goModulesCache := client.CacheVolume("gomodcache")
 
 	goContainer := client.Container(containerOpts).
-		From("golang:1.24.0").
+		From("golang:1.24.1").
 		WithMountedCache("/go/pkg/mod", goModulesCache).
 		WithMountedDirectory("/src", rootDir).
 		WithWorkdir("/src")
@@ -70,17 +70,22 @@ func Ci(ctx context.Context) error {
 	}
 
 	logger.Info().Msg("Build binary...")
-	goContainer = goContainer.WithExec([]string{"go", "build",
-		"-trimpath",
-		"-ldflags", "-s -w",
-	})
+	goContainer = goContainer.
+		WithExec([]string{"go", "build",
+			"-trimpath",
+			"-ldflags", "-s -w",
+		})
 	if _, err := goContainer.ExitCode(ctx); err != nil {
 		return err
 	}
 
 	logger.Info().Msg("Running alive-check...")
 	// Do a quick alive check on the generated binary
-	backendContainer := goContainer.WithExposedPort(8080).WithExec([]string{"./gograz-meetup", "--addr", "0.0.0.0:8080"})
+	backendContainer := goContainer.
+		WithExposedPort(8080).
+		AsService(dagger.ContainerAsServiceOpts{
+			Args: []string{"./gograz-meetup", "--addr", "0.0.0.0:8080"},
+		})
 
 	code, err := goContainer.
 		WithServiceBinding("backend", backendContainer).
