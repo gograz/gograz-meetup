@@ -42,6 +42,8 @@ func (c *Client) executeGraphQLQuery(ctx context.Context, query string, variable
 	if resp.StatusCode != http.StatusOK {
 		return fmt.Errorf("query returned unexpected status code %d", resp.StatusCode)
 	}
-	defer resp.Body.Close()
+	defer func() {
+		_ = resp.Body.Close()
+	}()
 	return json.NewDecoder(resp.Body).Decode(output)
 }
