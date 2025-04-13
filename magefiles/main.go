@@ -43,7 +43,9 @@ func Ci(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
-	defer client.Close()
+	defer func() {
+		_ = client.Close()
+	}()
 	branch := os.Getenv("GITHUB_REF_NAME")
 
 	containerOpts := dagger.ContainerOpts{
@@ -116,7 +118,7 @@ func Ci(ctx context.Context) error {
 			return err
 		}
 		if _, err := io.Copy(writer, fp); err != nil {
-			fp.Close()
+			_ = fp.Close()
 			return err
 		}
 		if err := writer.Close(); err != nil {

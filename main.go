@@ -59,9 +59,10 @@ func convertRSVPs(in meetupcom.RSVPsResponse) rsvps {
 			PhotoLink: item.Member.Photo.PhotoLink,
 			ThumbLink: item.Member.Photo.ThumbLink,
 		}
-		if item.Response == "YES" {
+		switch item.Response {
+		case "YES":
 			out.Yes = append(out.Yes, m)
-		} else if item.Response == "NO" {
+		case "NO":
 			out.No = append(out.No, m)
 		}
 	}
