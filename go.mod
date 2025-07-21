@@ -4,7 +4,7 @@ go 1.24.0
 
 require (
 	cloud.google.com/go/storage v1.55.0
-	dagger.io/dagger v0.18.12
+	dagger.io/dagger v0.18.14
 	github.com/go-chi/chi/v5 v5.2.2
 	github.com/go-chi/cors v1.2.2
 	github.com/magefile/mage v1.15.0
