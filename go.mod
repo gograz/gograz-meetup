@@ -3,7 +3,7 @@ module github.com/gograz/gograz-meetup
 go 1.24.0
 
 require (
-	cloud.google.com/go/storage v1.59.1
+	cloud.google.com/go/storage v1.59.2
 	dagger.io/dagger v0.19.10
 	github.com/go-chi/chi/v5 v5.2.4
 	github.com/go-chi/cors v1.2.2
