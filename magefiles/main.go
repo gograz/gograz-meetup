@@ -56,7 +56,7 @@ func Ci(ctx context.Context) error {
 	goModulesCache := client.CacheVolume("gomodcache")
 
 	goContainer := client.Container(containerOpts).
-		From("golang:1.24.1").
+		From("golang:1.26.1").
 		WithMountedCache("/go/pkg/mod", goModulesCache).
 		WithMountedDirectory("/src", rootDir).
 		WithWorkdir("/src")
