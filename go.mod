@@ -1,6 +1,7 @@
 module github.com/gograz/gograz-meetup
 
 go 1.25.0
+toolchain go1.26.1
 
 require (
 	cloud.google.com/go/storage v1.60.0
