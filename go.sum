@@ -20,8 +20,8 @@ cloud.google.com/go/storage v1.61.3 h1:VS//ZfBuPGDvakfD9xyPW1RGF1Vy3BWUoVZXgW1KM
 cloud.google.com/go/storage v1.61.3/go.mod h1:JtqK8BBB7TWv0HVGHubtUdzYYrakOQIsMLffZ2Z/HWk=
 cloud.google.com/go/trace v1.11.7 h1:kDNDX8JkaAG3R2nq1lIdkb7FCSi1rCmsEtKVsty7p+U=
 cloud.google.com/go/trace v1.11.7/go.mod h1:TNn9d5V3fQVf6s4SCveVMIBS2LJUqo73GACmq/Tky0s=
-dagger.io/dagger v0.20.1 h1:BbQis4P12Ijvf+kzJrC1Gmm4VVwBu2ahMrDV1Sxl1Xk=
-dagger.io/dagger v0.20.1/go.mod h1:hoOWggeS4rxqcxyQruKDbx0nOwLNtnKjL+khAPwnU6g=
+dagger.io/dagger v0.20.3 h1:AuA+0rYluQRzHh/hgQd4Ay2zyhZed65PZfgU1VdVKT4=
+dagger.io/dagger v0.20.3/go.mod h1:hoOWggeS4rxqcxyQruKDbx0nOwLNtnKjL+khAPwnU6g=
 github.com/99designs/gqlgen v0.17.81 h1:kCkN/xVyRb5rEQpuwOHRTYq83i0IuTQg9vdIiwEerTs=
 github.com/99designs/gqlgen v0.17.81/go.mod h1:vgNcZlLwemsUhYim4dC1pvFP5FX0pr2Y+uYUoHFb1ig=
 github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp v1.30.0 h1:sBEjpZlNHzK1voKq9695PJSX2o5NEXl7/OL3coiIY0c=
