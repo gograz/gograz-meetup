@@ -9,7 +9,7 @@ require (
 	dagger.io/dagger v0.20.5
 	github.com/go-chi/chi/v5 v5.2.5
 	github.com/go-chi/cors v1.2.2
-	github.com/magefile/mage v1.17.0
+	github.com/magefile/mage v1.17.1
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/rs/zerolog v1.35.0
 	github.com/sirupsen/logrus v1.9.4
