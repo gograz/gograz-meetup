@@ -6,7 +6,7 @@ toolchain go1.26.1
 
 require (
 	cloud.google.com/go/storage v1.62.0
-	dagger.io/dagger v0.20.5
+	dagger.io/dagger v0.20.6
 	github.com/go-chi/chi/v5 v5.2.5
 	github.com/go-chi/cors v1.2.2
 	github.com/magefile/mage v1.17.1
