@@ -1,12 +1,10 @@
 module github.com/gograz/gograz-meetup
 
-go 1.25.0
-
-toolchain go1.26.1
+go 1.26.1
 
 require (
 	cloud.google.com/go/storage v1.62.2
-	dagger.io/dagger v0.20.8
+	dagger.io/dagger v0.21.3
 	github.com/go-chi/chi/v5 v5.3.0
 	github.com/go-chi/cors v1.2.2
 	github.com/magefile/mage v1.17.2
@@ -32,6 +30,7 @@ require (
 	github.com/adrg/xdg v0.5.3 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/cncf/xds/go v0.0.0-20251210132809-ee656c7534f5 // indirect
+	github.com/dagger/querybuilder v0.0.0-20260402040506-574a5e81cb59 // indirect
 	github.com/envoyproxy/go-control-plane/envoy v1.36.0 // indirect
 	github.com/envoyproxy/protoc-gen-validate v1.3.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
